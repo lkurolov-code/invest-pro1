@@ -855,3 +855,64 @@ nav {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
 }
+/* KALKULYATOR MOBIL MOSLASHUVI */
+.calc-wrapper {
+    max-width: 500px; /* Telefonda ortiqcha kengayib ketmasligi uchun */
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column; /* Elementlarni ustma-ust taxlaydi */
+    gap: 15px;
+    padding: 15px; /* Chetki masofa */
+}
+
+.input-card, .result-card {
+    width: 100%; /* Ekran kengligi bo'yicha */
+    padding: 20px;
+    border-radius: 20px;
+    box-sizing: border-box; /* Padding ichkarida qolishi uchun */
+}
+
+/* Input va Selectlarni telefonda kattaroq va qulay qilish */
+input, select {
+    width: 100%;
+    height: 50px; /* Barmoq bilan bosishga qulay */
+    font-size: 16px;
+    padding: 10px 15px;
+    margin: 8px 0 15px 0;
+    border-radius: 12px;
+}
+
+/* Natijalar qatorini ixchamlashtirish */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.stat-row span {
+    font-size: 14px;
+}
+
+.stat-row b {
+    font-size: 16px;
+}
+
+/* Jami summa yozuvini ajratib ko'rsatish */
+#jamiSumma {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+/* Kompyuter uchun (ekran keng bo'lganda yonma-yon turadi) */
+@media (min-width: 769px) {
+    .calc-wrapper {
+        max-width: 900px;
+        flex-direction: row; /* Yonma-yon turish */
+        align-items: stretch;
+    }
+    .input-card, .result-card {
+        flex: 1;
+    }
+}
