@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <title>InvestPro - Kelajak Sarmoyasi</title>
     <!-- FontAwesome Ikonkalari uchun -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+
 </head>
 <body>
     <!-- Navigatsiya -->
@@ -18,13 +19,12 @@
             <a href="#plans">Tariflar</a>
             <a href="#">Biz haqimizda</a>
         </div>
-        <a href="https://t.me/Nazokat8910" class="nav-join-btn">Bog'lanish <i class="fas fa-arrow-right"></i></a>
+        <a href="https://t.me/kitobsavda" class="nav-join-btn">Bog'lanish <i class="fas fa-arrow-right"></i></a>
     </nav>
 
 
-<a href="https://t.me/Nazokat8910" class="floating-tg">
-    <i class="fab fa-telegram-plane"></i>
-</a>
+
+
 
 
 
@@ -34,7 +34,14 @@
             <h1>Mablag'ingizni biz bilan <br> <span>aqlli investitsiya qiling</span></h1>
             <p>Har kuni foizlar hisoblanadi va muddat yakunida asosiy summa qaytariladi.</p>
             <div class="hero-btns">
-    <a href="https://t.me/Nazokat8910" class="floating-tg">
+<a href="https://t.me/kitobsavda" class="floating-tg">
+    <div class="operator-box">
+        <i class="fas fa-headset">📞</i> 
+        
+    </div>
+</a>
+
+
 
     <a href="hisobla.html" class="outline-btn"><i class="fas fa-calculator"></i> Daromadni hisoblash</a>
 </div>
@@ -59,9 +66,11 @@
                     <h3 class="price">200 000 so'm</h3>
                     <ul class="features">
                         <li><i class="fas fa-chart-line"></i> Kuniga 3% daromad</li>
-                        <li><i class="fas fa-check-circle"></i> Avtomatik hisoblash</li>
+                        <li><i class="fas fa-check-circle"></i> ✅ Minimal tavakkal: Kichik sarmoya bilan investitsiya olamini o'rganing.
+✅ Kunlik daromad: Har kuni 3% foyda hisobingizga qo'shiladi.
+✅ Oson boshlash: Talabalar va yangi boshlovchilar uchun eng maqbul tanlov.</li>
                     </ul>
-                    <a href="https://t.me/Nazokat8910" class="p-btn">Sotib olish</a>
+                    <button onclick="kitobSotibOlish('Kitob 1', '200 000', '3%')" class="p-btn">Sotib olish</button>
                 </div>
             </div>
 
@@ -72,9 +81,11 @@
                     <h3 class="price">500 000 so'm</h3>
                     <ul class="features">
                         <li><i class="fas fa-chart-line"></i> Kuniga 3% daromad</li>
-                        <li><i class="fas fa-check-circle"></i> Tezkor to'lov</li>
+                        <li><i class="fas fa-check-circle"></i> 🔥 Ommabop tanlov: Ko'pchilik investorlarimiz aynan shu tarifni afzal ko'rishadi.
+🚀 Tezkor o'sish: 500 000 so'm sarmoya bilan sezilarli passiv daromadga chiqing.
+⚡ Tezkor to'lov: Foydani yechib olishda ustuvorlik beriladi.</li>
                     </ul>
-                    <a href="https://t.me/Nazokat8910" class="p-btn">Sotib olish</a>
+                   <button onclick="kitobSotibOlish('Kitob 2', '500 000', '3%')" class="p-btn">Sotib olish</button>
                 </div>
             </div>
 
@@ -85,9 +96,12 @@
                     <h3 class="price">1 000 000 so'm</h3>
                     <ul class="features">
                         <li><i class="fas fa-chart-line"></i> Kuniga 3% daromad</li>
-                        <li><i class="fas fa-crown"></i> VIP imkoniyatlar</li>
+                        <li><i class="fas fa-crown"></i> 💎 VIP Imkoniyat: Eng yuqori darajadagi xizmat va shaxsiy yordam.
+💰 Katta foyda: 1 000 000 so'm sarmoya orqali maksimal daromad manbai.
+👑 Eksklyuziv bonus: Muddat yakunida asosiy summani 100% qaytarish kafolati.</li>
+                            <button  onclick="kitobSotibOlish('Kitob 3', '1 000 000', '3%')"  class="p-btn">Sotib olish</button>
                     </ul>
-                    <a href="https://t.me/Nazokat8910" class="p-btn">Sotib olish</a>
+                       
                 </div>
             </div>
 
@@ -107,7 +121,7 @@
             <div class="info-box">
                 <h3><i class="fas fa-phone-alt"></i> ALOQA</h3>
                 <ul style="list-style: none; padding: 0;">
-                    <li><i class="fab fa-telegram"></i> Telegram: @Nazokat8910</li>
+                    <li><i class="fab fa-telegram"></i> Telegram: @kitobsavda</li>
                     <li><i class="fas fa-headset"></i> Admin: 24/7 javob beradi</li>
                 </ul>
             </div>
@@ -115,68 +129,7 @@
     </div>
 </section>
 
-  
-
-<!-- Chart.js kutubxonasi (Buni </body> yopilishidan oldin qo'shing) -->
-<script src="https://jsdelivr.net"></script>
-
-
-   <footer class="main-footer">
-    <div class="container">
-        <div class="footer-grid">
-            <!-- 1. Brand va Slogan -->
-            <div class="footer-brand">
-                <div class="footer-logo">InvestPro</div>
-                <p>Kelajagingizni biz bilan aqlli investitsiyalar orqali quring. Xavfsiz, shaffof va ishonchli tizim.</p>
-                <div class="social-icons">
-                    <a href="T.me/Nazokat8910"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-
-            <!-- 2. Tezkor menyu -->
-            <div class="footer-links">
-                <h4>Menyular</h4>
-                <ul>
-                    <li><a href="#">Asosiy</a></li>
-                    <li><a href="#plans">Tariflar</a></li>
-                    <li><a href="#">Kalkulyator</a></li>
-                    <li><a href="#">Biz haqimizda</a></li>
-                </ul>
-            </div>
-
-            <!-- 3. Bog'lanish -->
-            <div class="footer-contact">
-                <h4>Bog'lanish</h4>
-                <p><i class="fas fa-envelope"></i> support@@Nazokat8910</p>
-                <p><i class="fas fa-phone"></i> +998 (87) 250 89 10 </p>
-                <p><i class="fas fa-map-marker-alt"></i> Xorazm, O'zbekiston</p>
-            </div>
-
-            <!-- 4. Xavfsizlik -->
-            <div class="footer-security">
-                <h4>Xavfsizlik</h4>
-                <div class="security-badges">
-                    <span><i class="fas fa-lock"></i> SSL Himoyalangan</span>
-                    <span><i class="fas fa-shield-alt"></i> 256-bit Shifrlash</span>
-                </div>
-                <p style="font-size: 11px; margin-top: 10px; color: #888;">Investitsiya qilish xavf bilan bog'liq. Qaror qabul qilishdan oldin maslahat oling.</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2026 InvestPro. Barcha huquqlar himoyalangan.</p>
-            <div class="legal-links">
-                <a href="#">Maxfiylik siyosati</a>
-                <a href="#">Foydalanish shartlari</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- Statistika va Grafika Bo'limi -->
-<section class="stats-section">
+  <section class="stats-section">
     <div class="container">
         <h2 class="section-title">Jonli Statistika</h2>
         
@@ -223,7 +176,91 @@
     </div>
 </section>
 
+<!-- Chart.js kutubxonasi (Buni </body> yopilishidan oldin qo'shing) -->
+<script src="https://jsdelivr.net"></script>
+
+
+   <footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- 1. Brand va Slogan -->
+            <div class="footer-brand">
+                <div class="footer-logo">InvestPro</div>
+                <p>Kelajagingizni biz bilan aqlli investitsiyalar orqali quring. Xavfsiz, shaffof va ishonchli tizim.</p>
+                <div class="social-icons">
+                    <a href="T.me/kitobsavda"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- 2. Tezkor menyu -->
+            <div class="footer-links">
+                <h4>Menyular</h4>
+                <ul>
+                    <li><a href="#">Asosiy</a></li>
+                    <li><a href="#plans">Tariflar</a></li>
+                    <li><a href="#">Kalkulyator</a></li>
+                    <li><a href="#">Biz haqimizda</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. Bog'lanish -->
+            <div class="footer-contact">
+                <h4>Bog'lanish</h4>
+                <p><i class="fas fa-envelope"></i> support@@kitobsavda</p>
+                <p><i class="fas fa-phone"></i> +998 (87) 250 89 10 </p>
+                <p><i class="fas fa-map-marker-alt"></i> Xorazm, O'zbekiston</p>
+            </div>
+
+            <!-- 4. Xavfsizlik -->
+            <div class="footer-security">
+                <h4>Xavfsizlik</h4>
+                <div class="security-badges">
+                    <span><i class="fas fa-lock"></i> SSL Himoyalangan</span>
+                    <span><i class="fas fa-shield-alt"></i> 256-bit Shifrlash</span>
+                </div>
+                <p style="font-size: 11px; margin-top: 10px; color: #888;">Investitsiya qilish xavf bilan bog'liq. Qaror qabul qilishdan oldin maslahat oling.</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 InvestPro. Barcha huquqlar himoyalangan.</p>
+            <div class="legal-links">
+                <a href="#">Maxfiylik siyosati</a>
+                <a href="#">Foydalanish shartlari</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Statistika va Grafika Bo'limi -->
+
+
    
+</script>
+
+
+
+
+
+<script>
+function kitobSotibOlish(nomi, narxi, foyda) {
+    // Sizning Telegram username
+    const telegramUser = "kitobsavda";
+    
+    // Xabar matnini shakllantirish (%0A - yangi qator uchun)
+    const text = `Assalomu alaykum! Men InvestPro sayti orqali quyidagi tarifni tanladim:%0A%0A` +
+                 `📚 *Tanlangan kitob:* ${nomi}%0A` +
+                 `💰 *Narxi:* ${narxi} so'm%0A` +
+                 `📈 *Foyda:* Kuniga ${foyda}%0A%0A` +
+                 `Iltimos, to'lov qilish uchun ma'lumotlarni yuborsangiz.`;
+
+    // Telegram havola yaratish va yo'naltirish
+    const telegramUrl = `https://t.me/kitobsavda?text=${encodeURIComponent(text.replace(/\*/g, ''))}`;
+    
+    window.location.href = telegramUrl;
+}
 </script>
 
 </body>
