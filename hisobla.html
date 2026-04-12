@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cloudflare.com">
     <script src="https://jsdelivr.net"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://jsdelivr.net"></script>
+
     <style>
         /* Kalkulyator uchun maxsus qo'shimcha uslublar */
         .calc-wrapper {
@@ -95,9 +97,10 @@
             <span style="font-size: 14px; opacity: 0.9;">Jami qaytariladigan summa:</span>
             <h2 id="jamiSumma" style="margin: 5px 0;">0 UZS</h2>
         </div>
-        <a href="https://t.me/Nazokat8910" style="display: block; text-align: center; background: #fbbf24; color: #000; padding: 12px; margin-top: 20px; border-radius: 8px; text-decoration: none; font-weight: bold;">
-            Sarmoyani boshlash <i class="fab fa-telegram-plane"></i>
-        </a>
+       <button onclick="sarmoyaniBoshlash()" style="width:100%; cursor:pointer; background:#fbbf24; border:none; padding:15px; border-radius:8px; font-weight:bold;">
+    Sarmoyani boshlash <i class="fab fa-telegram-plane"></i>
+</button>
+
     </div>
 </div>
 
@@ -122,30 +125,26 @@ function hisobla() {
     chizish(summa, jami, kunlar);
 }
 
-function chizish(boshlangich, oxirgi, muddat) {
-    const ctx = document.getElementById('miniChart').getContext('2d');
-    
-    if (myChart) { myChart.destroy(); }
+function sarmoyaniBoshlash() {
+    const summa = document.getElementById('summa').value;
+    const kun = document.getElementById('kun').value;
+    const jami = document.getElementById('jamiSumma').innerText;
 
-    myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Boshida', 'Yarim muddat', 'Yakunda'],
-            datasets: [{
-                label: 'Mablag\' o\'sishi',
-                data: [boshlangich, (boshlangich + oxirgi)/2, oxirgi],
-                borderColor: '#2563eb',
-                tension: 0.4,
-                fill: true,
-                backgroundColor: 'rgba(37, 99, 235, 0.1)'
-            }]
-        },
-        options: {
-            plugins: { legend: { display: false } },
-            scales: { y: { display: false } }
-        }
-    });
+    // Telegram uchun xabar matni
+    const text = `Assalomu alaykum! Men InvestPro orqali sarmoya qilmoqchiman.%0A%0A` +
+                 `💰 Sarmoya miqdori: ${summa} UZS%0A` +
+                 `📅 Muddat: ${kun} kun%0A` +
+                 `📈 Jami qaytadigan summa: ${jami}%0A%0A` +
+                 `Iltimos, to'lov ma'lumotlarini yuboring.`;
+
+    // Sizning Telegram manzilingiz
+    const telegramUser = "Nazokat8910"; 
+    
+    // Telegram havolasini ochish
+    window.location.href = `https://t.me/Nazokat8910?text=${text}`;
 }
+
+
 
 // Sahifa yuklanganda ishga tushirish
 window.onload = hisobla;
