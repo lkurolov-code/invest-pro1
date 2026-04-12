@@ -4,156 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InvestPro - Daromad Hisoblagich</title>
-    <!-- FontAwesome va Chart.js to'g'ri havolalari -->
+    <!-- To'g'ri ikonka linki -->
     <link rel="stylesheet" href="https://cloudflare.com">
-    <script src="https://jsdelivr.net"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="https://jsdelivr.net"></script>
-
-    <style>
-        /* Kalkulyator uchun maxsus qo'shimcha uslublar */
-        .calc-wrapper {
-            max-width: 900px;
-            margin: 50px auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 20px;
-        }
-        .input-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .result-card {
-            background: #1e293b;
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-        .stat-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 5px;
-        }
-        @media (max-width: 768px) { .calc-wrapper { grid-template-columns: 1fr; } }
-    </style>
 </head>
 <body style="background: #f1f5f9;">
+    <nav style="background: white; padding: 15px 10%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo" style="color: #2563eb; font-weight: bold; font-size: 24px;">InvestPro</div>
+        <a href="index.html" style="text-decoration: none; color: #666;"><i class="fas fa-arrow-left"></i> Orqaga</a>
+    </nav>
 
-<nav style="background: white; padding: 15px 10%; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-    <div class="logo" style="color: #2563eb; font-weight: bold; font-size: 24px;">InvestPro</div>
-    <a href="index.html" style="text-decoration: none; color: #666;"><i class="fas fa-arrow-left"></i> Orqaga qaytish</a>
-</nav>
+    <div class="calc-wrapper">
+        <div class="input-card">
+            <h3><i class="fas fa-calculator"></i> Hisoblagich</h3>
+            
+            <label>Tarifni tanlang (Sarmoya):</label>
+            <select id="summa" onchange="hisobla()" style="width: 100%; padding: 12px; margin: 10px 0 20px; border-radius: 8px; border: 1px solid #ddd;">
+                <option value="200000">Kitob 1 - 200 000 UZS</option>
+                <option value="500000">Kitob 2 - 500 000 UZS</option>
+                <option value="1000000">Kitob 3 - 1 000 000 UZS</option>
+            </select>
 
-<div class="calc-wrapper">
-    <!-- INPUTLAR -->
-    <div class="input-card">
-        <h3 style="margin-top: 0;"><i class="fas fa-calculator"></i> Hisoblagich</h3>
-        
-        <label>Sarmoya miqdori (UZS):</label>
-        <input type="number" id="summa" value="200000" oninput="hisobla()">
+            <label>Muddat (Kun):</label>
+            <select id="kun" onchange="hisobla()" style="width: 100%; padding: 12px; margin: 10px 0 20px; border-radius: 8px; border: 1px solid #ddd;">
+                <option value="60">60 kun (START)</option>
+                <option value="150" selected>150 kun (OPTIMAL)</option>
+                <option value="365">365 kun (MAXIMUM)</option>
+            </select>
+            
+            <p style="font-size: 13px; color: #666; font-style: italic;">* Eslatma: Sarmoya summasi qaytarilmaydi, foyda ichiga kiritilgan.</p>
+        </div>
 
-        <label>Muddat (Kun):</label>
-        <select id="kun" onchange="hisobla()">
-            <option value="60">60 kun (START)</option>
-            <option value="150" selected>150 kun (OPTIMAL)</option>
-            <option value="365">365 kun (MAXIMUM)</option>
-        </select>
+        <div class="result-card">
+            <h3 style="margin-bottom: 20px;">Natijangiz:</h3>
+            <div class="stat-row"><span>Kunlik foyda (2%):</span> <b id="kunlikFoyda" style="color: #fbbf24;">0 UZS</b></div>
+            <div class="stat-row"><span>Jami sof foyda:</span> <b id="umumiyFoyda">0 UZS</b></div>
+            
+            <div style="background: #2563eb; padding: 20px; border-radius: 12px; text-align: center; margin-top: 10px;">
+                <span style="font-size: 13px; opacity: 0.9;">Muddat yakunidagi jami daromad:</span>
+                <h2 id="jamiSumma" style="margin-top: 5px; font-size: 28px;">0 UZS</h2>
+            </div>
 
-        <p style="font-size: 14px; color: #10b981;"><i class="fas fa-percent"></i> Kunlik daromad stavkasi: 3%</p>
-        
-        <div style="margin-top: 20px;">
-            <canvas id="miniChart" height="200"></canvas>
+            <button onclick="sarmoyaniBoshlash()" style="width:100%; margin-top:20px; cursor:pointer; background:#fbbf24; border:none; padding:18px; border-radius:10px; font-weight:bold; font-size:16px; transition: 0.3s;">
+                Sarmoyani boshlash <i class="fab fa-telegram-plane"></i>
+            </button>
         </div>
     </div>
 
-    <!-- NATIJALAR -->
-    <div class="result-card">
-        <h3>Natijangiz:</h3>
-        <div class="stat-row">
-            <span>Kunlik foyda:</span>
-            <b id="kunlikFoyda" style="color: #fbbf24;">0 UZS</b>
-        </div>
-        <div class="stat-row">
-            <span>Umumiy foyda:</span>
-            <b id="umumiyFoyda">0 UZS</b>
-        </div>
-        <div style="margin-top: 20px; background: #2563eb; padding: 15px; border-radius: 10px; text-align: center;">
-            <span style="font-size: 14px; opacity: 0.9;">Jami qaytariladigan summa:</span>
-            <h2 id="jamiSumma" style="margin: 5px 0;">0 UZS</h2>
-        </div>
-       <button onclick="sarmoyaniBoshlash()" style="width:100%; cursor:pointer; background:#fbbf24; border:none; padding:15px; border-radius:8px; font-weight:bold;">
-    Sarmoyani boshlash <i class="fab fa-telegram-plane"></i>
-</button>
-
-    </div>
-</div>
-
-<script>
-let myChart;
-
-function hisobla() {
-    const summa = parseFloat(document.getElementById('summa').value) || 0;
-    const kunlar = 60; // Shartingiz bo'yicha 2 oy
-    const kunlikFoiz = 0.03; // 3%
-
-    const kunlikFoyda = summa * kunlikFoiz;
-    const jamiSofFoyda = kunlikFoyda * kunlar;
-    const har5KunlikChiqaruv = kunlikFoyda * 5; // Har 5 kunda chiqadigan pul
-    const jamiSumma = summa + jamiSofFoyda;
-
-    // Natijalarni ekranga chiqarish
-    document.getElementById('kunlikFoyda').innerText = kunlikFoyda.toLocaleString() + " UZS";
-    document.getElementById('umumiyFoyda').innerText = jamiSofFoyda.toLocaleString() + " UZS";
-    document.getElementById('jamiSumma').innerText = jamiSumma.toLocaleString() + " UZS";
-
-    // Yangi qo'shilgan: Har 5 kundagi to'lov miqdori
-    // Buning uchun natijalar qismiga yangi stat-row qo'shsangiz ham bo'ladi
-    console.log("Har 5 kunda chiqariladigan pul: " + har5KunlikChiqaruv);
-
-    updateChart(summa, jamiSumma);
-}
-
-
-function sarmoyaniBoshlash() {
-    const summa = document.getElementById('summa').value;
-    const kun = document.getElementById('kun').value;
-    const jami = document.getElementById('jamiSumma').innerText;
-
-    // Telegram uchun xabar matni
-    const text = `Assalomu alaykum! Men InvestPro orqali sarmoya qilmoqchiman.%0A%0A` +
-                 `💰 Sarmoya miqdori: ${summa} UZS%0A` +
-                 `📅 Muddat: ${kun} kun%0A` +
-                 `📈 Jami qaytadigan summa: ${jami}%0A%0A` +
-                 `Iltimos, to'lov ma'lumotlarini yuboring.`;
-
-    // Sizning Telegram manzilingiz
-    const telegramUser = "Nazokat8910"; 
-    
-    // Telegram havolasini ochish
-    window.location.href = `https://t.me/kitobsavda?text=${text}`;
-}
-
-
-
-// Sahifa yuklanganda ishga tushirish
-window.onload = hisobla;
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
