@@ -109,21 +109,26 @@ let myChart;
 
 function hisobla() {
     const summa = parseFloat(document.getElementById('summa').value) || 0;
-    const kunlar = parseInt(document.getElementById('kun').value);
-    const foiz = 0.03; // Kuniga 3%
+    const kunlar = 60; // Shartingiz bo'yicha 2 oy
+    const kunlikFoiz = 0.03; // 3%
 
-    const kunlik = summa * foiz;
-    const sofFoyda = kunlik * kunlar;
-    const jami = summa + sofFoyda;
+    const kunlikFoyda = summa * kunlikFoiz;
+    const jamiSofFoyda = kunlikFoyda * kunlar;
+    const har5KunlikChiqaruv = kunlikFoyda * 5; // Har 5 kunda chiqadigan pul
+    const jamiSumma = summa + jamiSofFoyda;
 
     // Natijalarni ekranga chiqarish
-    document.getElementById('kunlikFoyda').innerText = kunlik.toLocaleString() + " UZS";
-    document.getElementById('umumiyFoyda').innerText = sofFoyda.toLocaleString() + " UZS";
-    document.getElementById('jamiSumma').innerText = jami.toLocaleString() + " UZS";
+    document.getElementById('kunlikFoyda').innerText = kunlikFoyda.toLocaleString() + " UZS";
+    document.getElementById('umumiyFoyda').innerText = jamiSofFoyda.toLocaleString() + " UZS";
+    document.getElementById('jamiSumma').innerText = jamiSumma.toLocaleString() + " UZS";
 
-    // Grafikni yangilash
-    chizish(summa, jami, kunlar);
+    // Yangi qo'shilgan: Har 5 kundagi to'lov miqdori
+    // Buning uchun natijalar qismiga yangi stat-row qo'shsangiz ham bo'ladi
+    console.log("Har 5 kunda chiqariladigan pul: " + har5KunlikChiqaruv);
+
+    updateChart(summa, jamiSumma);
 }
+
 
 function sarmoyaniBoshlash() {
     const summa = document.getElementById('summa').value;
