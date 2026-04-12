@@ -619,3 +619,110 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
+/* Sotib olish tugmasi uchun maxsus dizayn */
+.p-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #b0aeae, #4852ad);
+    /* Yorqin qizil-olovrang gradient */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    /* Dumaloq shakl */
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 75, 43, 0.3);
+    transition: all 0.3s ease;
+    animation: pulse-animation 2s infinite;
+    /* Doimiy silkinish effekti */
+}
+
+.p-btn:hover {
+    transform: scale(1.1);
+    /* Sichqoncha borganda kattalashadi */
+    box-shadow: 0 15px 25px rgba(255, 75, 43, 0.5);
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+
+/* Pulsatsiya effekti (diqqatni tortish uchun) */
+@keyframes pulse-animation {
+    0% {
+        box-shadow: 0 0 0 0px rgba(255, 75, 43, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 75, 43, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0px rgba(255, 75, 43, 0);
+    }
+}
+
+.floating-tg {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    /* Yashil rang (ishonch belgisi) */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    /* Dumaloq emas, uzunchoq qulay tugma */
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: slideIn 1s ease-out, pulse 2s infinite;
+}
+
+.operator-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Ikonka va yozuv orasidagi masofa */
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.floating-tg i {
+    font-size: 20px;
+}
+
+.floating-tg:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #733dc9, #2e8c81);
+}
+
+/* Tugma silkinitib turishi uchun animatsiya */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        right: -150px;
+    }
+
+    to {
+        right: 30px;
+    }
+}
