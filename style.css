@@ -848,3 +848,10 @@ nav {
     transform: rotate(180deg);
     color: #00ff88;
 }
+.main-btn {
+    transition: 0.3s;
+}
+.main-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+}
