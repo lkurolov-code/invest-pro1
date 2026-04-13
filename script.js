@@ -280,3 +280,52 @@ function kitobSotibOlish(nomi, narxi, foiz) {
     localStorage.setItem('pending_plan', JSON.stringify(tanlov));
     window.location.href = 'active.html';
 }
+function hisobla() {
+    const summaSelect = document.getElementById('summa');
+    const kunSelect = document.getElementById('kun');
+    
+    // Elementlar borligini tekshirish
+    if (!summaSelect || !kunSelect) return;
+
+    const summa = parseFloat(summaSelect.value);
+    const options = kunSelect.options;
+
+    // --- TARIF CHEKLOVLARI (Sizning kodingiz bo'yicha) ---
+    if (summa === 200000) { 
+        options[1].disabled = true;  
+        options[2].disabled = true;  
+        kunSelect.value = "60";      
+    } 
+    else if (summa === 500000) { 
+        options[1].disabled = false; 
+        options[2].disabled = true;  
+        if (kunSelect.value === "365") kunSelect.value = "150";
+    } 
+    else if (summa === 1000000) { 
+        options[1].disabled = false;
+        options[2].disabled = false;
+    }
+
+    // --- HISOB-KITOB (Kunlik 3%) ---
+    const kunlar = parseInt(kunSelect.value);
+    const kunlikFoiz = 0.03; 
+
+    const kunlikFoyda = summa * kunlikFoiz;
+    const jamiSofFoyda = kunlikFoyda * kunlar;
+
+    // --- NATIJALARNI EKRANGA CHIQARISH ---
+    // Bu ID-lar index.html dagi natija chiqadigan joylar bilan bir xil bo'lishi kerak
+    if(document.getElementById('kunlikFoyda')) {
+        document.getElementById('kunlikFoyda').innerText = Math.floor(kunlikFoyda).toLocaleString() + " UZS";
+    }
+    if(document.getElementById('umumiyFoyda')) {
+        document.getElementById('umumiyFoyda').innerText = Math.floor(jamiSofFoyda).toLocaleString() + " UZS";
+    }
+    if(document.getElementById('jamiSumma')) {
+        document.getElementById('jamiSumma').innerText = Math.floor(jamiSofFoyda).toLocaleString() + " UZS";
+    }
+}
+
+// Sahifa yuklanganda kalkulyatorni bir marta ishlatib qo'yamiz
+window.addEventListener('load', hisobla);
+
