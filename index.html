@@ -14,9 +14,9 @@
     <nav>
         <div class="logo">InvestPro</div>
         <div class="nav-links">
-            <a href="#">Asosiy</a>
+            <a href="index.html">Asosiy</a>
             <a href="#plans">Tariflar</a>
-            <a href="#">Biz haqimizda</a>
+            <a href="about.html">Biz haqimizda</a>
         </div>
         <a href="https://t.me/kitobsavda" class="nav-join-btn">Bog'lanish <i class="fas fa-arrow-right"></i></a>
     </nav>
@@ -60,7 +60,7 @@
 </div>
 
 
-    <!-- Tariflar Bo'limi -->
+ 
    <!-- Katalog va Tariflar Bo'limi -->
 <section id="plans" class="pricing-section">
     <div class="container">
@@ -90,9 +90,10 @@
                     <h3 class="price">500 000 so'm</h3>
                     <ul class="features">
                         <li><i class="fas fa-chart-line"></i> Kuniga 3% daromad</li>
-                        <li><i class="fas fa-check-circle"></i> 🔥 Ommabop tanlov: Ko'pchilik investorlarimiz aynan shu tarifni afzal ko'rishadi.
-🚀 Tezkor o'sish: 500 000 so'm sarmoya bilan sezilarli passiv daromadga chiqing.
-⚡ Tezkor to'lov: Foydani yechib olishda ustuvorlik beriladi.</li>
+                        <li><i class="fas fa-check-circle"></i> 🔥 Ommabop tanlov:
+                             Ko'pchilik investorlarimiz aynan shu tarifni afzal ko'rishadi.
+                            🚀 Tezkor o'sish: 500 000 so'm sarmoya bilan sezilarli passiv daromadga chiqing.
+                            ⚡ Tezkor to'lov: Foydani yechib olishda ustuvorlik beriladi.</li>
                     </ul>
                    <button onclick="kitobSotibOlish('Kitob 2', '500 000', '3%')" class="p-btn">Sotib olish</button>
                 </div>
@@ -210,7 +211,7 @@
             <!-- 4-savol -->
             <details class="faq-card">
                 <summary>Operator bilan qanday bog'lanaman? <i class="fas fa-chevron-down"></i></summary>
-                <p>Saytdagi "Operator" tugmasini bosing yoki Telegram orqali @kitobsavda profiliga yozing. Biz 24/7 rejimida javob beramiz.</p>
+                <p>Saytdagi "Operator" tugmasini bosing yoki Telegram orqali @Nazokat8910 profiliga yozing. Biz 24/7 rejimida javob beramiz.</p>
             </details>
              <!-- 5-savol -->
              <details class="faq-card">
@@ -246,7 +247,8 @@
                 </ul>
             </div>
 
-        
+          
+           
             <!-- 4. Xavfsizlik -->
             <div class="footer-security">
                 <h4>Xavfsizlik</h4>
@@ -277,24 +279,7 @@
 
 
 
-<script>
-function kitobSotibOlish(nomi, narxi, foyda) {
-    // Sizning Telegram username
-    const telegramUser = "kitobsavda";
-    
-    // Xabar matnini shakllantirish (%0A - yangi qator uchun)
-    const text = `Assalomu alaykum! Men InvestPro sayti orqali quyidagi tarifni tanladim:%0A%0A` +
-                 `📚 *Tanlangan kitob:* ${nomi}%0A` +
-                 `💰 *Narxi:* ${narxi} so'm%0A` +
-                 `📈 *Foyda:* Kuniga ${foyda}%0A%0A` +
-                 `Iltimos, to'lov qilish uchun ma'lumotlarni yuborsangiz.`;
-
-    // Telegram havola yaratish va yo'naltirish
-    const telegramUrl = `https://t.me/kitobsavda?text=${encodeURIComponent(text.replace(/\*/g, ''))}`;
-    
-    window.location.href = telegramUrl;
-}
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
